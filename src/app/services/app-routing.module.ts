@@ -5,10 +5,12 @@ import { ListRenderComponent } from "../components/list-render/list-render.compo
 import { TwoWayBindingComponent } from "../components/two-way-binding/two-way-binding.component";
 import { PipesComponent } from "../components/pipes/pipes.component";
 import { IfRenderComponent } from "../components/if-render/if-render.component";
+import { ItemDetailComponent } from "../components/item-detail/item-detail.component";
 
 const routes: Routes = [
   {path: '', component: FirstComponentComponent},
   {path : 'list', component: ListRenderComponent},
+  {path: 'list/:id', component: ItemDetailComponent },
   {path: 'pipe', component: PipesComponent},
   {path: 'twoWay', component: TwoWayBindingComponent},
   {path: 'ifRender', component: IfRenderComponent},

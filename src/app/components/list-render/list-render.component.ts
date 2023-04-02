@@ -13,12 +13,7 @@ export class ListRenderComponent implements OnInit{
   animals: Animal[] = [];
   subjects: Subject[] = [];
   
-
-  // animal : Animal = {
-  //   name: 'Teste',
-  //   type: 'Alguma coisa',
-  //   age: 10
-  // };
+ 
   animalDetails = '';
   subjectDetails = '';
 
@@ -37,12 +32,14 @@ export class ListRenderComponent implements OnInit{
   }
 
   removeSubject(subject: Subject){
-    console.log('Removendo subject...');
-    this.subjects = this.listService.removeSubject(this.subjects, subject);
+    // console.log('Removendo subject...');
+    this.subjects = this.subjects.filter((s) => subject.name !== s.name);
+    this.listService.removeSubject(subject.id).subscribe();
+    
   }
   removeAnimal(animal: Animal){
-    console.log("Removendo animal...");
-    this.animals = this.listService.remove(this.animals, animal);
+  this.animals = this.animals.filter((a) => animal.name !== a.name); //exclusao a nivel de front-end
+  this.listService.remove(animal.id).subscribe(); //exclusão a nivel de backp-end acessando a nossa API apgando os dados no db.json. //a gente não tem o subrscibe aqui de fato (nao temos para atribuição), mas para todo evento que a gente vai ter lá interagindo com o banco de dados a gente vai ter que ter o subscribe, mas so a invocação dele, que é a maneira do angular dizer que ele foi executado
   }
 
   addAgeAnimal(animal : Animal){
